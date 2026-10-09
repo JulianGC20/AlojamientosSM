@@ -1,0 +1,36 @@
+.page {
+  max-width: 1200px;
+  margin: auto;
+  padding: 35px 20px;
+}
+.tabla {
+  background: #fff;
+  border-radius: 12px;
+  overflow: auto;
+}
+.fila {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr 1fr 0.8fr 1.2fr 1fr;
+  gap: 12px;
+  padding: 16px;
+  border-bottom: 1px solid #eee;
+  min-width: 850px;
+}
+.encabezado {
+  font-weight: 700;
+  background: #f9fafb;
+}
+.estado {
+  color: #15803d;
+  font-weight: 700;
+}
+.empty {
+  background: #fff;
+  text-align: center;
+  padding: 60px;
+  border-radius: 12px;
+}
+.empty a {
+  color: #2563eb;
+  text-decoration: none;
+}

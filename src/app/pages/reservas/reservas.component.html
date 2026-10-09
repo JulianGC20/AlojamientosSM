@@ -1,0 +1,25 @@
+<section class="page">
+  <h1>Mis reservas</h1>
+  <div *ngIf="reservas.length; else vacio" class="tabla">
+    <div class="fila encabezado">
+      <span>Alojamiento</span><span>Ciudad</span><span>Llegada</span><span>Salida</span
+      ><span>Huéspedes</span><span>Total</span><span>Estado</span>
+    </div>
+    <div class="fila" *ngFor="let r of reservas">
+      <span>{{ r.alojamiento }}</span
+      ><span>{{ r.ciudad }}</span
+      ><span>{{ r.llegada }}</span
+      ><span>{{ r.salida }}</span
+      ><span>{{ r.huespedes }}</span
+      ><span>{{ r.total | currency: "COP" : "symbol" : "1.0-0" }}</span
+      ><span class="estado">{{ r.estado }}</span>
+    </div>
+  </div>
+  <ng-template #vacio
+    ><div class="empty">
+      <h2>No tienes reservas todavía</h2>
+      <p>Cuando realices una reserva aparecerá aquí.</p>
+      <a routerLink="/alojamientos">Buscar alojamientos</a>
+    </div></ng-template
+  >
+</section>
