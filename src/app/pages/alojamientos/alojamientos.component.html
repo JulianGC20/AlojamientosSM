@@ -1,0 +1,57 @@
+<section class="page">
+  <h1>Alojamientos</h1>
+
+  <div class="filtros">
+    <label>
+      Ciudad
+      <select [(ngModel)]="ciudad" (ngModelChange)="filtrar()">
+        <option value="">Todas</option>
+        <option *ngFor="let c of ciudades" [value]="c">{{ c }}</option>
+      </select>
+    </label>
+    <label>
+      Huéspedes
+      <input type="number" min="1" [(ngModel)]="huespedes" (ngModelChange)="filtrar()" />
+    </label>
+    <label>
+      Tipo
+      <select [(ngModel)]="tipo" (ngModelChange)="filtrar()">
+        <option value="">Todos</option>
+        <option *ngFor="let t of tipos" [value]="t">{{ t }}</option>
+      </select>
+    </label>
+    <label>
+      Precio máximo
+      <input type="number" min="1" [(ngModel)]="precioMax" (ngModelChange)="filtrar()" />
+    </label>
+    <button (click)="limpiar()">Limpiar filtros</button>
+  </div>
+
+  <div class="empty" *ngIf="cargando">Cargando alojamientos...</div>
+  <div class="empty" *ngIf="error">{{ error }}</div>
+
+  <ng-container *ngIf="!cargando && !error">
+    <p class="count">{{ filtrados.length }} alojamiento(s) encontrado(s)</p>
+
+    <div *ngIf="filtrados.length > 0; else vacio" class="grid">
+      <article class="card" *ngFor="let a of filtrados">
+        <img [src]="a.imagenPrincipal" [alt]="a.nombre" />
+        <div class="cardbody">
+          <h2>{{ a.nombre }}</h2>
+          <p>{{ a.ciudad }} · {{ a.tipo }}</p>
+          <p>👥 Hasta {{ a.capacidad }} huéspedes</p>
+          <p>★ {{ a.calificacion }}</p>
+          <div class="services">
+            <span *ngFor="let s of a.servicios">{{ s }}</span>
+          </div>
+          <strong>{{ a.precioNoche | currency: "COP" : "symbol" : "1.0-0" }} / noche</strong>
+          <a [routerLink]="['/alojamientos', a.id]">Ver detalle</a>
+        </div>
+      </article>
+    </div>
+
+    <ng-template #vacio>
+      <div class="empty">No encontramos alojamientos con esos filtros.</div>
+    </ng-template>
+  </ng-container>
+</section>
