@@ -1,0 +1,141 @@
+<!-- Portada -->
+<section class="hero">
+  <img class="hero-fondo" src="assets/images/guatape.jpg" alt="" />
+  <div class="hero-capa"></div>
+  <div class="hero-contenido">
+    <span class="tag">Alojamientos SM</span>
+    <h1>Encuentra el lugar perfecto para tu próxima escapada</h1>
+    <p>
+      Apartamentos, casas y cabañas en las mejores ciudades de Colombia. Explora, cotiza tu estadía
+      y reserva en pocos pasos.
+    </p>
+    <div class="hero-botones">
+      <a class="btn" routerLink="/alojamientos">Buscar alojamientos</a>
+      <a class="btn btn-borde" routerLink="/mis-reservas">Mis reservas</a>
+    </div>
+  </div>
+</section>
+
+<!-- Beneficios -->
+<section class="beneficios">
+  <div class="beneficio">
+    <span class="icono"
+      ><svg
+        viewBox="0 0 24 24"
+        width="24"
+        height="24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z" />
+        <circle cx="12" cy="10" r="2.5" /></svg
+    ></span>
+    <h3>Destinos para todos</h3>
+    <p>Ciudad, playa o naturaleza: elige el plan que más te guste.</p>
+  </div>
+  <div class="beneficio">
+    <span class="icono"
+      ><svg
+        viewBox="0 0 24 24"
+        width="24"
+        height="24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <path d="M6 3h9l4 4v14H6z" />
+        <path d="M14 3v5h5" />
+        <path d="M9 13h6M9 17h6" /></svg
+    ></span>
+    <h3>Cotización clara</h3>
+    <p>Mira el valor total de tu estadía antes de reservar.</p>
+  </div>
+  <div class="beneficio">
+    <span class="icono"
+      ><svg
+        viewBox="0 0 24 24"
+        width="24"
+        height="24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <circle cx="12" cy="12" r="9" />
+        <path d="M8 12.5l3 3 5-6" /></svg
+    ></span>
+    <h3>Reserva fácil</h3>
+    <p>Solo necesitas tu nombre y tu correo electrónico.</p>
+  </div>
+</section>
+
+<!-- Destacados -->
+<section class="contenido">
+  <div class="titulo-seccion">
+    <div>
+      <p class="sobretitulo">Los favoritos</p>
+      <h2>Alojamientos destacados</h2>
+    </div>
+    <a class="ver-todos" routerLink="/alojamientos">Ver todos →</a>
+  </div>
+
+  <p class="estado" *ngIf="cargando">Cargando alojamientos...</p>
+  <p class="estado error" *ngIf="error">{{ error }}</p>
+
+  <div class="grid" *ngIf="!cargando && !error">
+    <article class="card" *ngFor="let a of destacados">
+      <div class="card-img">
+        <img [src]="a.imagenPrincipal" [alt]="a.nombre" />
+        <span class="calificacion">★ {{ a.calificacion }}</span>
+      </div>
+      <div class="card-cuerpo">
+        <p class="ciudad">{{ a.ciudad }} · {{ a.tipo }}</p>
+        <h3>{{ a.nombre }}</h3>
+        <p class="capacidad">👥 Hasta {{ a.capacidad }} huéspedes</p>
+        <div class="card-pie">
+          <p class="precio">
+            {{ a.precioNoche | currency: "COP" : "symbol" : "1.0-0" }} <span>/ noche</span>
+          </p>
+          <a class="ver" [routerLink]="['/alojamientos', a.id]">Ver detalle</a>
+        </div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- Cómo funciona -->
+<section class="pasos">
+  <h2>¿Cómo funciona?</h2>
+  <div class="pasos-lista">
+    <div class="paso">
+      <span class="numero">1</span>
+      <h3>Busca</h3>
+      <p>Filtra por ciudad, tipo, huéspedes y precio.</p>
+    </div>
+    <div class="paso">
+      <span class="numero">2</span>
+      <h3>Cotiza</h3>
+      <p>Elige tus fechas y mira el total de tu estadía.</p>
+    </div>
+    <div class="paso">
+      <span class="numero">3</span>
+      <h3>Reserva</h3>
+      <p>Confirma tu reserva y consúltala en Mis reservas.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Llamado final -->
+<section class="cta">
+  <h2>¿Listo para tu próximo viaje?</h2>
+  <p>Descubre todos nuestros alojamientos disponibles.</p>
+  <a class="btn" routerLink="/alojamientos">Explorar alojamientos</a>
+</section>
+
+<footer class="pie">Alojamientos SM · Proyecto de Desarrollo de Sistemas de Información 3</footer>
