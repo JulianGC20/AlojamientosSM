@@ -1,41 +1,41 @@
-# Alojamientos SM - Marketplace de Alojamientos
+Alojamientos SM - Marketplace de Alojamientos
 
 Proyecto de curso de Desarrollo de Sistemas de Información 3 - Ingeniería de Sistemas, Universidad El Bosque.
 
-## Descripción
+Descripción
 Aplicación web (solo frontend) hecha con Angular para explorar alojamientos temporales de Inversiones LR.
 El usuario puede ver alojamientos, filtrarlos, consultar su detalle, cotizar una estadía y simular una reserva.
-No usa backend: los datos salen de un archivo JSON (consultado desde un servicio Angular) y las reservas se guardan en el localStorage del navegador.
 
-## Integrantes
+
+Integrantes
 - Julian Andres Guerrero Castiblanco
 
-## Tecnologías utilizadas
-- Angular 22 (componentes standalone y Angular Router)
+Tecnologías utilizadas
+- Angular 22 
 - TypeScript
 - HTML y CSS
 - RxJS
 - JSON y localStorage
 - Git y GitHub
 
-## Requisitos
+Requisitos
 - Angular CLI 22 (se instala junto con las dependencias del proyecto)
 - npm
 
-## Instalación
-```bash
-git clone <URL-DEL-REPOSITORIO>
+Instalación
+bash
+git clone <https://github.com/JulianGC20/AlojamientosSM.git>
 cd <carpeta-del-proyecto>
 npm install
-```
 
-## Ejecución
-```bash
+
+Ejecución
+bash
 npm start
-```
+
 Luego abrir http://localhost:4200/ en el navegador.
 
-## Principales funcionalidades
+Principales funcionalidades
 - Página inicial con logo, descripción, alojamientos destacados y acceso a la búsqueda.
 - Listado de alojamientos activos (los inactivos no se muestran).
 - Filtros por ciudad, huéspedes, tipo y precio máximo, con botón para limpiarlos y mensaje cuando no hay resultados.
@@ -44,16 +44,16 @@ Luego abrir http://localhost:4200/ en el navegador.
 - Reserva simulada (nombre y correo) con estado CONFIRMADA.
 - Mis reservas, guardadas en localStorage (siguen disponibles al recargar).
 
-## Rutas
+Rutas
 | Ruta | Pantalla |
-|---|---|
+sit s
 | `/` | Inicio |
 | `/alojamientos` | Listado y filtros |
 | `/alojamientos/:id` | Detalle, cotización y reserva |
 | `/mis-reservas` | Mis reservas |
 
-## Estructura general del proyecto
-```
+Estructura general del proyecto
+
 src/
 ├── assets/
 │   ├── data/marketplace-data.json   datos de la aplicación
@@ -69,4 +69,3 @@ src/
     ├── app.routes.ts                rutas
     └── app.config.ts                configuración
 docs/                                requerimientos, reglas de negocio, prototipos, componentes y navegación
-```
