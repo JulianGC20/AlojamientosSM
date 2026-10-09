@@ -1,0 +1,108 @@
+.page {
+  max-width: 1150px;
+  margin: auto;
+  padding: 30px 20px;
+}
+.top {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 35px;
+  background: #fff;
+  padding: 25px;
+  border-radius: 14px;
+  margin-top: 18px;
+}
+.principal {
+  width: 100%;
+  height: 390px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+.thumbs {
+  display: flex;
+  gap: 8px;
+  margin-top: 8px;
+}
+.thumbs img {
+  width: 80px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 6px;
+}
+.facts {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin: 20px 0;
+}
+.columns {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  gap: 25px;
+  margin-top: 25px;
+}
+.columns > div,
+.quote {
+  background: #fff;
+  border-radius: 14px;
+  padding: 25px;
+}
+.quote {
+  height: max-content;
+  position: sticky;
+  top: 90px;
+}
+.quote label,
+.reserva label {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin: 12px 0;
+  font-weight: 700;
+  font-size: 13px;
+}
+.quote input,
+.reserva input {
+  padding: 10px;
+  border: 1px solid #d1d5db;
+  border-radius: 7px;
+}
+.quote button,
+.reserva button {
+  width: 100%;
+  padding: 12px;
+  border: 0;
+  border-radius: 7px;
+  background: #2563eb;
+  color: #fff;
+  cursor: pointer;
+}
+.error {
+  color: #b91c1c;
+  background: #fee2e2;
+  padding: 10px;
+  border-radius: 7px;
+}
+.resultado {
+  margin-top: 20px;
+}
+.review {
+  border-bottom: 1px solid #eee;
+  padding: 10px 0;
+}
+.empty {
+  padding: 80px 20px;
+  text-align: center;
+}
+@media (max-width: 800px) {
+  .top,
+  .columns {
+    grid-template-columns: 1fr;
+  }
+  .quote {
+    position: static;
+  }
+  .principal {
+    height: 280px;
+  }
+}

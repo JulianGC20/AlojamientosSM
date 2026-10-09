@@ -1,0 +1,131 @@
+<section class="empty" *ngIf="cargando">
+  <p>Cargando alojamiento...</p>
+</section>
+
+<section class="empty" *ngIf="!cargando && !alojamiento">
+  <h2>Alojamiento no encontrado</h2>
+  <a routerLink="/alojamientos">Volver a alojamientos</a>
+</section>
+
+<section class="page" *ngIf="alojamiento">
+  <a routerLink="/alojamientos">← Volver</a>
+
+  <div class="top">
+    <div class="gallery">
+      <img class="principal" [src]="imagenSeleccionada" [alt]="alojamiento.nombre" />
+      <div class="thumbs">
+        <img
+          *ngFor="let img of alojamiento.imagenes"
+          [src]="img"
+          [alt]="alojamiento.nombre"
+          (click)="imagenSeleccionada = img"
+        />
+      </div>
+    </div>
+
+    <div>
+      <h1>{{ alojamiento.nombre }}</h1>
+      <p>{{ alojamiento.ciudad }} · {{ alojamiento.ubicacion }}</p>
+      <p>{{ alojamiento.tipo }} · ★ {{ alojamiento.calificacion }}</p>
+      <p>{{ alojamiento.descripcion }}</p>
+      <div class="facts">
+        <span>👥 {{ alojamiento.capacidad }} huéspedes</span>
+        <span>🛏 {{ alojamiento.habitaciones }} habitaciones</span>
+        <span>🛌 {{ alojamiento.camas }} camas</span>
+        <span>🚿 {{ alojamiento.banos }} baños</span>
+      </div>
+      <h2>
+        {{ alojamiento.precioNoche | currency: "COP" : "symbol" : "1.0-0" }}
+        <small>/ noche</small>
+      </h2>
+    </div>
+  </div>
+
+  <div class="columns">
+    <div>
+      <h2>Servicios</h2>
+      <ul>
+        <li *ngFor="let s of alojamiento.servicios">{{ s }}</li>
+      </ul>
+
+      <h2>Reglas</h2>
+      <ul>
+        <li *ngFor="let r of alojamiento.reglas">{{ r }}</li>
+      </ul>
+
+      <h2>Reseñas</h2>
+      <p *ngIf="resenas.length === 0">Este alojamiento todavía no tiene reseñas.</p>
+      <article class="review" *ngFor="let r of resenas">
+        <strong>{{ r.usuario }} · ★{{ r.calificacion }}</strong>
+        <p>{{ r.comentario }}</p>
+      </article>
+    </div>
+
+    <aside class="quote">
+      <h2>Cotización</h2>
+
+      <label>
+        Llegada
+        <input type="date" [min]="hoy" [(ngModel)]="llegada" (ngModelChange)="invalidar()" />
+      </label>
+      <label>
+        Salida
+        <input
+          type="date"
+          [min]="llegada || hoy"
+          [(ngModel)]="salida"
+          (ngModelChange)="invalidar()"
+        />
+      </label>
+      <label>
+        Huéspedes (máximo {{ alojamiento.capacidad }})
+        <input type="number" min="1" [(ngModel)]="huespedes" (ngModelChange)="invalidar()" />
+      </label>
+
+      <button (click)="calcular()">Calcular cotización</button>
+
+      <div *ngIf="erroresCotizacion.length > 0">
+        <p class="error" *ngFor="let e of erroresCotizacion">{{ e }}</p>
+      </div>
+
+      <div *ngIf="cotizacionValida" class="resultado">
+        <p>
+          Noches: <b>{{ noches }}</b>
+        </p>
+        <p>
+          Subtotal: <b>{{ subtotal | currency: "COP" : "symbol" : "1.0-0" }}</b>
+        </p>
+        <p>
+          Limpieza:
+          <b>{{ alojamiento.tarifaLimpieza | currency: "COP" : "symbol" : "1.0-0" }}</b>
+        </p>
+        <p>
+          Servicio (10%): <b>{{ servicio | currency: "COP" : "symbol" : "1.0-0" }}</b>
+        </p>
+        <hr />
+        <p>
+          Total: <b>{{ total | currency: "COP" : "symbol" : "1.0-0" }}</b>
+        </p>
+        <button (click)="abrirReserva()">Reservar</button>
+      </div>
+
+      <div *ngIf="mostrarReserva" class="reserva">
+        <h3>Datos del huésped</h3>
+        <label>
+          Nombre
+          <input [(ngModel)]="nombre" />
+        </label>
+        <label>
+          Correo electrónico
+          <input type="email" [(ngModel)]="correo" />
+        </label>
+
+        <div *ngIf="erroresReserva.length > 0">
+          <p class="error" *ngFor="let e of erroresReserva">{{ e }}</p>
+        </div>
+
+        <button (click)="confirmar()">Confirmar reserva</button>
+      </div>
+    </aside>
+  </div>
+</section>
