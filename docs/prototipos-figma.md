@@ -1,0 +1,1 @@
+https://www.figma.com/design/FgIUni7pphsCE2ssvlFwTF/Alojamientos-SM?node-id=4-92&p=f&t=jIXrRfCvY3TIOOGh-0
