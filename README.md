@@ -1,71 +1,67 @@
-Alojamientos SM - Marketplace de Alojamientos
+# Alojamientos SM - Marketplace de Alojamientos
 
-Proyecto de curso de Desarrollo de Sistemas de Información 3 - Ingeniería de Sistemas, Universidad El Bosque.
+Proyecto de la materia Desarrollo de Sistemas de Información 3, Ingeniería de Sistemas, Universidad El Bosque.
 
-Descripción
-Aplicación web (solo frontend) hecha con Angular para explorar alojamientos temporales de Inversiones LR.
-El usuario puede ver alojamientos, filtrarlos, consultar su detalle, cotizar una estadía y simular una reserva.
+## Descripción
+Esta es una página web hecha con Angular para ver alojamientos de la empresa Inversiones LR. Se pueden buscar alojamientos, ver el detalle de cada uno, cotizar y hacer una reserva de prueba.
 
-
-Integrantes
+## Integrantes
 - Julian Andres Guerrero Castiblanco
 
-Tecnologías utilizadas
-- Angular 22 
+## Tecnologías utilizadas
+- Angular 22
 - TypeScript
 - HTML y CSS
-- RxJS
 - JSON y localStorage
 - Git y GitHub
 
-Requisitos
-- Angular CLI 22 (se instala junto con las dependencias del proyecto)
+## Requisitos
+- Angular 
 - npm
 
-Instalación
-bash
-git clone <https://github.com/JulianGC20/AlojamientosSM.git>
-cd <carpeta-del-proyecto>
+## Instalación
+```bash
+git clone https://github.com/JulianGC20/AlojamientosSM.git
+cd AlojamientosSM
 npm install
+```
 
-
-Ejecución
-bash
+## Ejecución
+```bash
 npm start
+```
+Después se abre http://localhost:4200/ en el navegador.
 
-Luego abrir http://localhost:4200/ en el navegador.
+## Principales funcionalidades
+- Página de inicio con la descripción y los alojamientos destacados.
+- Listado de alojamientos (los inactivos no se muestran).
+- Filtros por ciudad, huéspedes, tipo y precio máximo, con un botón para limpiarlos.
+- Mensaje cuando la búsqueda no tiene resultados.
+- Detalle del alojamiento con servicios, reglas, imágenes y reseñas.
+- Cotización con noches, subtotal, tarifa de limpieza, tarifa de servicio (10%) y total.
+- Validación de fechas y número de huéspedes.
+- Reserva con nombre y correo, con estado CONFIRMADA.
+- Mis reservas, que se siguen viendo aunque se recargue la página.
 
-Principales funcionalidades
-- Página inicial con logo, descripción, alojamientos destacados y acceso a la búsqueda.
-- Listado de alojamientos activos (los inactivos no se muestran).
-- Filtros por ciudad, huéspedes, tipo y precio máximo, con botón para limpiarlos y mensaje cuando no hay resultados.
-- Detalle del alojamiento con información, imágenes, servicios, reglas y reseñas.
-- Cotización con noches, subtotal, tarifa de limpieza, tarifa de servicio (10%) y total, con validación de fechas y huéspedes.
-- Reserva simulada (nombre y correo) con estado CONFIRMADA.
-- Mis reservas, guardadas en localStorage (siguen disponibles al recargar).
+## Rutas
+- `/` inicio
+- `/alojamientos` listado y filtros
+- `/alojamientos/:id` detalle, cotización y reserva
+- `/mis-reservas` reservas realizadas
 
-Rutas
-| Ruta | Pantalla |
-sit s
-| `/` | Inicio |
-| `/alojamientos` | Listado y filtros |
-| `/alojamientos/:id` | Detalle, cotización y reserva |
-| `/mis-reservas` | Mis reservas |
+## Prototipos
+El enlace de los prototipos en Figma está en `docs/prototipos-figma.md`.
 
-Estructura general del proyecto
-
+## Estructura general del proyecto
+```
 src/
 ├── assets/
-│   ├── data/marketplace-data.json   datos de la aplicación
-│   └── images/                      fotos de los alojamientos y logo
+│   ├── data/        archivo JSON con los datos
+│   └── images/      fotos de los alojamientos y el logo
 └── app/
-    ├── models/                      interfaces TypeScript
-    ├── services/                    alojamiento.service (JSON) y reserva.service (localStorage)
-    ├── components/navbar/           navegación
-    ├── pages/inicio/                página inicial
-    ├── pages/alojamientos/          listado y filtros
-    ├── pages/detalle/               detalle, cotización y reserva
-    ├── pages/reservas/              Mis reservas
-    ├── app.routes.ts                rutas
-    └── app.config.ts                configuración
-docs/                                requerimientos, reglas de negocio, prototipos, componentes y navegación
+    ├── models/      interfaces de TypeScript
+    ├── services/    servicio del JSON y servicio de reservas
+    ├── components/  navbar
+    └── pages/       inicio, alojamientos, detalle y reservas
+docs/                documentos del proyecto
+```
